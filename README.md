@@ -6,8 +6,49 @@
 ## 2. Saga (Pub / Sub) 확인
 ![exam-2](https://github.com/hossun/food-delivery-exam/assets/8733715/0f2b34be-6844-4086-9719-c75f6c12d2a4)
 
+## 3. Service Router 설치
+![exam-3-1](https://github.com/hossun/food-delivery-exam/assets/8733715/7f0b9e0d-99aa-40dd-b2e4-040373e1005e)
+![exam-3-2](https://github.com/hossun/food-delivery-exam/assets/8733715/4b500983-b1df-4367-a328-50e91aa13b55)
+```
+spring:
+  profiles: docker
+  cloud:
+    gateway:
+      routes:
+        - id: front
+          uri: http://front:8080
+          predicates:
+            - Path=/orders/**, /payments/**, 
+        - id: store
+          uri: http://store:8080
+          predicates:
+            - Path=/storeOrders/**, 
+        - id: delivery
+          uri: http://delivery:8080
+          predicates:
+            - Path=/dekeveries/**, 
+        - id: summary
+          uri: http://summary:8080
+          predicates:
+            - Path=/alertLogs/**, 
+        - id: frontend
+          uri: http://frontend:8080
+          predicates:
+            - Path=/**
+      globalcors:
+        corsConfigurations:
+          '[/**]':
+            allowedOrigins:
+              - "*"
+            allowedMethods:
+              - "*"
+            allowedHeaders:
+              - "*"
+            allowCredentials: true
 
-
+server:
+  port: 8080
+  ```
 
 ### Make sure there is a Kafka server running
 ```
