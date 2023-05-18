@@ -1,8 +1,6 @@
 package fooddeliveryexam.domain;
 
 import fooddeliveryexam.DeliveryApplication;
-import fooddeliveryexam.domain.DeliveryCompleted;
-import fooddeliveryexam.domain.DeliveryStarted;
 import java.util.Date;
 import java.util.List;
 import javax.persistence.*;
@@ -26,13 +24,8 @@ public class Dekevery {
     private String address;
 
     @PostPersist
-    public void onPostPersist() {
-       // DeliveryStarted deliveryStarted = new DeliveryStarted(this);
-       // deliveryStarted.publishAfterCommit();
 
-      //  DeliveryCompleted deliveryCompleted = new DeliveryCompleted(this);
-      //  deliveryCompleted.publishAfterCommit();
-    }
+    public void onPostPersist() {}
 
     public static DekeveryRepository repository() {
         DekeveryRepository dekeveryRepository = DeliveryApplication.applicationContext.getBean(
@@ -41,7 +34,15 @@ public class Dekevery {
         return dekeveryRepository;
     }
 
-    public void pick() {}
+    public void pick() {
+        DeliveryStarted deliveryStarted = new DeliveryStarted(this);
+        deliveryStarted.publishAfterCommit();
+    }
+
+    public void deliveryConfirm() {
+        DeliveryCompleted deliveryCompleted = new DeliveryCompleted(this);
+        deliveryCompleted.publishAfterCommit();
+    }
 
     public static void addToDeliveryList(Cooked cooked) {
         /** Example 1:  new item */ 

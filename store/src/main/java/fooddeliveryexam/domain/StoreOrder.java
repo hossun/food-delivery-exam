@@ -1,8 +1,6 @@
 package fooddeliveryexam.domain;
 
 import fooddeliveryexam.StoreApplication;
-import fooddeliveryexam.domain.Cooked;
-import fooddeliveryexam.domain.Rejected;
 import java.util.Date;
 import java.util.List;
 import javax.persistence.*;
@@ -32,13 +30,9 @@ public class StoreOrder {
     private String address;
 
     @PostPersist
-    public void onPostPersist() {
-        // Rejected rejected = new Rejected(this);
-        // rejected.publishAfterCommit();
 
-        // Cooked cooked = new Cooked(this);
-        // cooked.publishAfterCommit();
-    }
+    public void onPostPersist() {}
+
 
     public static StoreOrderRepository repository() {
         StoreOrderRepository storeOrderRepository = StoreApplication.applicationContext.getBean(
@@ -53,8 +47,8 @@ public class StoreOrder {
     }
 
     public void reject() {
-        Accepted accepted = new Accepted(this);
-        accepted.publishAfterCommit();
+        Rejected rejected = new Rejected(this);
+        rejected.publishAfterCommit();
     }
 
     public void startCook() {
@@ -62,7 +56,10 @@ public class StoreOrder {
         cooked.publishAfterCommit();
     }
 
-    public void finishCook() {}
+    public void finishCook() {
+        Cooked cooked = new Cooked(this);
+        cooked.publishAfterCommit();
+    }
 
     public static void addToOrderLists(OrderPlaced orderPlaced) {
         /** Example 1:  new item   */

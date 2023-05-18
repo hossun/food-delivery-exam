@@ -38,4 +38,25 @@ public class DekeveryController {
         dekeveryRepository.save(dekevery);
         return dekevery;
     }
+
+    @RequestMapping(
+        value = "dekeveries/{id}/deliveryconfirm",
+        method = RequestMethod.PUT,
+        produces = "application/json;charset=UTF-8"
+    )
+    public Dekevery deliveryConfirm(
+        @PathVariable(value = "id") Long id,
+        HttpServletRequest request,
+        HttpServletResponse response
+    ) throws Exception {
+        System.out.println("##### /dekevery/deliveryConfirm  called #####");
+        Optional<Dekevery> optionalDekevery = dekeveryRepository.findById(id);
+
+        optionalDekevery.orElseThrow(() -> new Exception("No Entity Found"));
+        Dekevery dekevery = optionalDekevery.get();
+        dekevery.deliveryConfirm();
+
+        dekeveryRepository.save(dekevery);
+        return dekevery;
+    }
 }

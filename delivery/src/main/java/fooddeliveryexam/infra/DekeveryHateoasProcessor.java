@@ -17,6 +17,13 @@ public class DekeveryHateoasProcessor
                 .of(model.getRequiredLink("self").getHref() + "/pic")
                 .withRel("pic")
         );
+        model.add(
+            Link
+                .of(
+                    model.getRequiredLink("self").getHref() + "/deliveryconfirm"
+                )
+                .withRel("deliveryconfirm")
+        );
 
         return model;
     }
