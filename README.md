@@ -23,7 +23,7 @@ See the README.md files inside the each microservices directory:
 - front
 - store
 - delivery
-- BoundedContext996.3333740234375
+- summary
 
 
 ## Run API Gateway (Spring Gateway)
@@ -46,7 +46,7 @@ mvn spring-boot:run
 ```
  http :8088/dekeveries id="id" riderId="riderId" storeId="storeId" orderId="orderId" address="address" 
 ```
-- BoundedContext996.3333740234375
+- summary
 ```
  http :8088/alertLogs id="id" customerId="customerId" message="message" 
 ```

@@ -20,7 +20,7 @@ spring:
           uri: http://localhost:8085
           predicates:
             - Path=/dekeveries/**, 
-        - id: BoundedContext996.3333740234375
+        - id: summary
           uri: http://localhost:8088
           predicates:
             - Path=/alertLogs/**, 
@@ -59,8 +59,8 @@ spring:
           uri: http://delivery:8080
           predicates:
             - Path=/dekeveries/**, 
-        - id: BoundedContext996.3333740234375
-          uri: http://boundedContext996_3333740234375:8080
+        - id: summary
+          uri: http://summary:8080
           predicates:
             - Path=/alertLogs/**, 
         - id: frontend
