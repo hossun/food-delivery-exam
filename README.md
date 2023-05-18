@@ -9,6 +9,8 @@
 ## 3. Service Router 설치
 ![exam-3-1](https://github.com/hossun/food-delivery-exam/assets/8733715/7f0b9e0d-99aa-40dd-b2e4-040373e1005e)
 ![exam-3-2](https://github.com/hossun/food-delivery-exam/assets/8733715/4b500983-b1df-4367-a328-50e91aa13b55)
+
+**router 정보**
 ```
 spring:
   profiles: docker
