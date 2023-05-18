@@ -35,11 +35,11 @@ public class Order {
         //Following code causes dependency to external APIs
         // it is NOT A GOOD PRACTICE. instead, Event-Policy mapping is recommended.
 
-        fooddeliveryexam.external.Payment payment = new fooddeliveryexam.external.Payment();
-        // mappings goes here
-        FrontApplication.applicationContext
-            .getBean(fooddeliveryexam.external.PaymentService.class)
-            .pay(payment);
+        // fooddeliveryexam.external.Payment payment = new fooddeliveryexam.external.Payment();
+        // // mappings goes here
+        // FrontApplication.applicationContext
+        //     .getBean(fooddeliveryexam.external.PaymentService.class)
+        //     .pay(payment);
 
         OrderPlaced orderPlaced = new OrderPlaced(this);
         orderPlaced.publishAfterCommit();

@@ -44,22 +44,14 @@ public class Dekevery {
     }
 
     public static void addToDeliveryList(Cooked cooked) {
-        /** Example 1:  new item 
         Dekevery dekevery = new Dekevery();
+        dekevery.setRiderId("aAAA");
+        dekevery.setAddress(cooked.getAddress());
+        dekevery.setOrderId(cooked.getOrderId());
         repository().save(dekevery);
 
-        */
-
-        /** Example 2:  finding and process
-        
-        repository().findById(cooked.get???()).ifPresent(dekevery->{
-            
-            dekevery // do something
-            repository().save(dekevery);
-
-
-         });
-        */
+        DeliveryStarted deliveryStarted = new DeliveryStarted(dekevery);
+        deliveryStarted.publishAfterCommit();
 
     }
 }

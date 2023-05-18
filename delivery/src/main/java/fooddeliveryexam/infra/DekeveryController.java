@@ -19,7 +19,7 @@ public class DekeveryController {
     DekeveryRepository dekeveryRepository;
 
     @RequestMapping(
-        value = "dekeveries/{id}/pic",
+        value = "dekeveries/{id}/pick",
         method = RequestMethod.PUT,
         produces = "application/json;charset=UTF-8"
     )

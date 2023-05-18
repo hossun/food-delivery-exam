@@ -60,11 +60,16 @@ public class StoreOrder {
     }
 
     public static void addToOrderLists(OrderPlaced orderPlaced) {
-        /** Example 1:  new item 
+        /** Example 1:  new item */
         StoreOrder storeOrder = new StoreOrder();
+        storeOrder.setOrderId(Long.toString(orderPlaced.getId()));
+        storeOrder.setFoodId(orderPlaced.getFoodId());
+        storeOrder.setQty(orderPlaced.getQty());    
+        storeOrder.setPrice(orderPlaced.getPrice());
+        storeOrder.setCustomerId(orderPlaced.getCustomerId());
+        storeOrder.setAddress(orderPlaced.getAddress());
         repository().save(storeOrder);
 
-        */
 
         /** Example 2:  finding and process
         

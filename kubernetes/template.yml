@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
         - name: front
-          image: username/front:latest
+          image: hossun/exam-front:v1
           ports:
             - containerPort: 8080
           readinessProbe:
@@ -58,7 +58,7 @@ spec:
     spec:
       containers:
         - name: store
-          image: username/store:latest
+          image: hossun/exam-store:v1
           ports:
             - containerPort: 8080
           readinessProbe:
@@ -98,7 +98,7 @@ spec:
     spec:
       containers:
         - name: delivery
-          image: username/delivery:latest
+          image: hossun/exam-delivery:v1
           ports:
             - containerPort: 8080
           readinessProbe:
@@ -138,7 +138,7 @@ spec:
     spec:
       containers:
         - name: summary
-          image: username/summary:latest
+          image: hossun/exam-summary:v1
           ports:
             - containerPort: 8080
           readinessProbe:
