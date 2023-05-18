@@ -3,7 +3,12 @@
 ## 1. Eventstorming Model
 ![exam-1](https://github.com/hossun/food-delivery-exam/assets/8733715/eae04f1e-55d9-4596-b197-c6cf24fcf5a7)
 
-## Before Running Services
+## 2. Saga (Pub / Sub) 확인
+![exam-2](https://github.com/hossun/food-delivery-exam/assets/8733715/0f2b34be-6844-4086-9719-c75f6c12d2a4)
+
+
+
+
 ### Make sure there is a Kafka server running
 ```
 cd kafka
