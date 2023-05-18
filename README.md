@@ -59,7 +59,7 @@ server:
   ```
 
 ## 4. Zero downtime Deployment
-### Zero Downtime 적용 안한 Case
+### 4.1 Zero Downtime 적용 안한 Case
 #### yaml 파일
 ```
 apiVersion: apps/v1
@@ -85,17 +85,14 @@ spec:
             - containerPort: 8080
 ```
 #### siege 로그
-![exam-4-1](https://github.com/hossun/food-delivery-exam/assets/8733715/cefcff9e-906b-4464-8b4b-5fb99480a826)
 
 ![exam-4-2](https://github.com/hossun/food-delivery-exam/assets/8733715/3b6e7f29-9e39-4e54-b596-0f9f1f73f1a4)
 
 
 
-
-
-###
+### 4.1 Zero Downtime 적용 Case
+#### yaml 파일
 ```
-
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -133,6 +130,7 @@ spec:
             timeoutSeconds: 2
             periodSeconds: 5
             failureThreshold: 5
-```            
+```
 
-
+#### siege 로그
+![exam-4-4](https://github.com/hossun/food-delivery-exam/assets/8733715/be62153d-7dac-4057-8350-710c890d43c9)
