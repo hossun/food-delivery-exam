@@ -27,11 +27,11 @@ public class Dekevery {
 
     @PostPersist
     public void onPostPersist() {
-        DeliveryStarted deliveryStarted = new DeliveryStarted(this);
-        deliveryStarted.publishAfterCommit();
+       // DeliveryStarted deliveryStarted = new DeliveryStarted(this);
+       // deliveryStarted.publishAfterCommit();
 
-        DeliveryCompleted deliveryCompleted = new DeliveryCompleted(this);
-        deliveryCompleted.publishAfterCommit();
+      //  DeliveryCompleted deliveryCompleted = new DeliveryCompleted(this);
+      //  deliveryCompleted.publishAfterCommit();
     }
 
     public static DekeveryRepository repository() {
@@ -44,11 +44,15 @@ public class Dekevery {
     public void pick() {}
 
     public static void addToDeliveryList(Cooked cooked) {
-        /** Example 1:  new item 
+        /** Example 1:  new item */ 
         Dekevery dekevery = new Dekevery();
+        dekevery.setRiderId("aAAA");
+        dekevery.setAddress(cooked.getAddress());
+        dekevery.setOrderId(cooked.getOrderId());
         repository().save(dekevery);
 
-        */
+        DeliveryStarted deliveryStarted = new DeliveryStarted(dekevery);
+        deliveryStarted.publishAfterCommit();
 
         /** Example 2:  finding and process
         

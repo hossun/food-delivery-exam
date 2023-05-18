@@ -33,11 +33,11 @@ public class StoreOrder {
 
     @PostPersist
     public void onPostPersist() {
-        Rejected rejected = new Rejected(this);
-        rejected.publishAfterCommit();
+        // Rejected rejected = new Rejected(this);
+        // rejected.publishAfterCommit();
 
-        Cooked cooked = new Cooked(this);
-        cooked.publishAfterCommit();
+        // Cooked cooked = new Cooked(this);
+        // cooked.publishAfterCommit();
     }
 
     public static StoreOrderRepository repository() {
@@ -52,18 +52,28 @@ public class StoreOrder {
         accepted.publishAfterCommit();
     }
 
-    public void reject() {}
+    public void reject() {
+        Accepted accepted = new Accepted(this);
+        accepted.publishAfterCommit();
+    }
 
-    public void startCook() {}
+    public void startCook() {
+        Cooked cooked = new Cooked(this);
+        cooked.publishAfterCommit();
+    }
 
     public void finishCook() {}
 
     public static void addToOrderLists(OrderPlaced orderPlaced) {
-        /** Example 1:  new item 
+        /** Example 1:  new item   */
         StoreOrder storeOrder = new StoreOrder();
+        storeOrder.setOrderId(Long.toString(orderPlaced.getId()));
+        storeOrder.setFoodId(orderPlaced.getFoodId());
+        storeOrder.setQty(orderPlaced.getQty());    
+        storeOrder.setPrice(orderPlaced.getPrice());
+        storeOrder.setCustomerId(orderPlaced.getCustomerId());
+        storeOrder.setAddress(orderPlaced.getAddress());
         repository().save(storeOrder);
-
-        */
 
         /** Example 2:  finding and process
         
